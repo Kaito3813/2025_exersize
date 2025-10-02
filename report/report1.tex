@@ -1,0 +1,165 @@
+\documentclass[a4paper,11pt]{jsarticle}
+
+% 数式
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{bm}
+
+% 図・色・レイアウト系
+\usepackage[x11names]{xcolor}         % まず xcolor を先に読み込む（colorより推奨）
+\usepackage[dvipdfmx]{graphicx}       % graphicx は後に
+\usepackage{here}                     % [H]で図の位置制御
+\usepackage{type1cm} 
+\usepackage{diagbox}
+\usepackage[format=plain,justification=centering]{caption}
+\usepackage{makecell} % プリアンブルに追加
+\usepackage{array} % プリアンブルに追加
+
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+
+
+% フレームや枠など
+\usepackage{ascmac}
+\usepackage{fancybox}
+
+\usepackage{multirow}
+\usepackage{booktabs}
+
+% リストやコード
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage{inconsolata}
+\usepackage{array}
+
+% ハイパーリンクと目次強化
+\usepackage{hyperref}
+
+% 箇条書きのカスタマイズ
+\usepackage{enumerate}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+
+% \LaTeX コマンド定義
+\makeatletter
+\providecommand{\LaTeX}{%
+  L\kern-.36em\raise.3ex\hbox{\scshape a}\kern-.15em%
+  T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}
+\makeatother
+
+% listings 設定
+\lstset{
+  basicstyle=\ttfamily,
+  identifierstyle=\small,
+  commentstyle=\small\itshape,
+  keywordstyle=\small\bfseries,
+  ndkeywordstyle=\small,
+  stringstyle=\small\ttfamily,
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=none,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex,
+  literate={<}{{\textless}}1 {>}{{\textgreater}}1
+}
+\renewcommand{\thefigure}{\thesection-\arabic{figure}}
+\newcommand{\grayhrulefill}{\textcolor{gray!50}{\rule[0.5ex]{\dimexpr\linewidth-1pt}{0.4pt}}}
+
+% \subtitle コマンド定義と \maketitle の再定義
+\makeatletter
+\newcommand{\subtitle}[1]{\gdef\@subtitle{#1}}
+\let\@subtitle\@empty
+\renewcommand{\maketitle}{%
+  \begin{center}
+    {\LARGE \@title \par}
+    \vskip 0.5em
+    {\large \@subtitle \par}
+    \vskip 1em
+    {\large \@author \par}
+    \vskip 1em
+    {\normalsize \@date \par}
+  \end{center}
+  \vskip 2em
+}
+\makeatother
+
+\begin{document}
+\flushbottom
+
+\title{総合演習課題0：小課題}
+\subtitle{}
+\author{学籍番号：2355078T \\ 氏名：小島魁人}
+\date{\today}
+\maketitle
+
+\section{問0-1}
+
+
+
+
+\section{問0-2}
+
+以下に示す(1)式を変形し、講義スライドp.11の(2)式になることを示す。
+
+\begin{equation}
+  \begin{aligned}
+    \frac{\partial v_x}{\partial t} + \left(v_x \frac{\partial}{\partial x} + v_y \frac{\partial}{\partial y}\right) v_x &= -\frac{1}{\rho} \frac{\partial p}{\partial x} + \nu \left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right) v_x \quad \cdots\text{①} \\
+    \frac{\partial v_x}{\partial t} + \left(v_x \frac{\partial}{\partial x} + v_y \frac{\partial}{\partial y}\right) v_y &= -\frac{1}{\rho} \frac{\partial p}{\partial y} + \nu \left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right) v_y \quad \cdots\text{②}\\
+    \frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y} &= 0 \quad \cdots\text{③}
+  \end{aligned}
+\end{equation}
+
+\textbf{ⅰ}\(\qquad \frac{\partial}{\partial x}\text{②} - \frac{\partial}{\partial y}\text{①}\)とする。
+
+\begin{equation*}
+  \frac{\partial}{\partial t}\left(\frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}\right) + \left(v_x \frac{\partial}{\partial x} + v_y \frac{\partial}{\partial y}\right)\left(\frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}\right) = \nu\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right)\left(\frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y}\right)
+\end{equation*}
+
+ここで、\(\omega = \frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y} \quad \cdots \text{④}\)とすると、
+
+\begin{align*}
+  -\frac{\partial \omega}{\partial t} - \left(v_x \frac{\partial}{\partial x} + v_y \frac{\partial}{\partial y}\right)\omega &= - \nu \left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right)\omega \\ 
+  \frac{\partial \omega}{\partial t} + \left(v_x \frac{\partial}{\partial x} + v_y \frac{\partial}{\partial y}\right)\omega &= \nu \left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right)\omega \tag{2.1}
+\end{align*}
+\textbf{ⅱ} \(\qquad\)\text{④}式に、\(v_x = \frac{\partial \psi}{\partial y} , v_y = - \frac{\partial \psi}{\partial x}\)を代入して、
+
+\begin{align*}
+  \omega &= \frac{\partial}{\partial x}\left(-\frac{\partial \psi}{\partial x}\right) - \frac{\partial}{\partial y}\left(\frac{\partial \psi}{\partial y}\right) \\
+  &= - \left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right)\psi \tag{2.2}
+\end{align*}
+
+\textbf{ⅲ} \(\qquad \frac{\partial}{\partial x}\text{①} + \frac{\partial}{\partial y}\text{②}\)とする。
+
+ 
+
+\begin{gather*}
+   \frac{\partial}{\partial t}\left(\frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y}\right) 
+   + \frac{\partial}{\partial x}\left(v_x \frac{\partial}{\partial x} + v_y\frac{\partial}{\partial y}\right)v_x
+   + \frac{\partial}{\partial y}\left(v_x \frac{\partial}{\partial x} + v_y\frac{\partial}{\partial y}\right) v_y \\
+   = -\frac{1}{\rho}\left(\frac{\partial}{\partial x}\frac{\partial P}{\partial x} + \frac{\partial}{\partial y}\frac{\partial P}{\partial y}\right) 
+   + \nu\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right)\left(\frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y}\right)
+\end{gather*}
+
+ここで、\(\text{③}\)式より、\(\left(\frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y}\right) = 0\)であるため、
+
+
+\begin{align*}
+  -\frac{1}{\rho}\left(\frac{\partial}{\partial x}\frac{\partial P}{\partial x} + \frac{\partial}{\partial y}\frac{\partial P}{\partial y}\right)
+  &=   \frac{\partial}{\partial x}\left(v_x \frac{\partial}{\partial x} + v_y\frac{\partial}{\partial y}\right)v_x
+  + \frac{\partial}{\partial y}\left(v_x \frac{\partial}{\partial x} + v_y\frac{\partial}{\partial y}\right) v_y \\
+  -\frac{1}{\rho}\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right)P 
+&= 2\left[\left(\frac{\partial^2 \psi}{\partial x\partial y}\right)^2 - \frac{\partial^2 \psi}{\partial x^2}\frac{\partial^2 \psi}{\partial y^2}\right] \\
+  \therefore \qquad\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right)P 
+  &=  2\rho\left[\frac{\partial^2 \psi}{\partial x^2}\frac{\partial^2 \psi}{\partial y^2} - \left(\frac{\partial^2 \psi}{\partial x\partial y}\right)^2\right] \qquad \tag{2.3}
+\end{align*}
+
+以上式(2.1)～式(2.3)から、\(v_x = \frac{\partial \psi}{\partial y}, v_y = -\frac{\partial \psi}{\partial x}\)と置いたとき、式(2)が導かれた。
+
+\end{document}
